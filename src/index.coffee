@@ -17,16 +17,21 @@ mergeReduce = (
   defaultState
   options
 ) ->
+
   unless defaultState
     throw new Error 'must be provided a default state.'
+
   (state = defaultState, action) ->
+
     isImmutable =
       unless options?.immutable?
       then true # default true
       else
         if options.immutable is false
         then false else true
+
     state = SI.new state if isImmutable
+
     r = {}
     for reduceName, reduce of reduceMap
       r[reduceName] = reduce state[reduceName], action

@@ -22,12 +22,13 @@
   },
   "homepage": "https://github.com/react-cfx/cfx.redux#readme",
   "devDependencies": {
-    "ddeyes": "^0.0.1",
-    "shelljs": "^0.6.0"
+    "babel-preset-env": "^1.5.1",
+    "ddeyes": "git+https://github.com/Mooxe000/ddeyes.git",
+    "shelljs": "^0.7.7"
   },
   "dependencies": {
-    "coffee-script": "^1.10.0",
-    "redux": "^3.4.0",
-    "cfx.seamless-immutable": "git+https://github.com/react-cfx/cfx.seamless-immutable.git"
+    "cfx.seamless-immutable": "git+https://github.com/react-cfx/cfx.seamless-immutable.git",
+    "coffeescript": "next",
+    "redux": "^3.6.0"
   }
 }

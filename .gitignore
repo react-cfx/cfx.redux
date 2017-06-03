@@ -15,3 +15,6 @@ dist
 dest
 .tmp
 tmp
+
+yarn.lock
+yarn*.log
