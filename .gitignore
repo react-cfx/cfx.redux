@@ -10,11 +10,13 @@
 #
 node_modules/
 npm-debug.log*
+pnpm*.log
 
 dist
-dest
 .tmp
 tmp
+
+package-lock.json
 
 yarn.lock
 yarn*.log

@@ -37,7 +37,7 @@ mergeReduce = (
       r[reduceName] = reduce state[reduceName], action
     r
 
-module.exports = {
+export default {
   redux
   createStore: CreateStore
   mergeReduce

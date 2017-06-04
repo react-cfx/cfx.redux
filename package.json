@@ -4,9 +4,9 @@
   "description": "cfx.redux",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf build",
-    "build": "npm run clean; coffee -bo build src"
+    "test": "make test",
+    "clean": "make clean",
+    "build": "make build"
   },
   "repository": {
     "type": "git",
@@ -22,13 +22,14 @@
   },
   "homepage": "https://github.com/react-cfx/cfx.redux#readme",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.5.1",
-    "ddeyes": "git+https://github.com/Mooxe000/ddeyes.git",
+    "coffeescript": "next",
+    "ddeyes": "^0.0.4",
     "shelljs": "^0.7.7"
   },
   "dependencies": {
     "cfx.seamless-immutable": "git+https://github.com/react-cfx/cfx.seamless-immutable.git",
-    "coffeescript": "next",
     "redux": "^3.6.0"
   }
 }

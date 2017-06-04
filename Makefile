@@ -10,9 +10,13 @@ docker:
 		mooxe/node \
 		/bin/bash
 
-clean:
-	rm -rf $$(pwd)/build
+build:
+	mkdir -p ./dest
+	coffee -pbc src/index.coffee > ./dest/index.es6
+	cat ./dest/index.es6 | babel --presets env > ./dest/index.js
 
-build: clean
-	mkdir -p build
-	coffee -pb src/index.coffee | babel --presets env > build/index.js
+clean:
+	rm -rf ./dest
+
+test: clean build
+	coffee test/index.coffee
