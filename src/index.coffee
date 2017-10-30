@@ -1,10 +1,10 @@
-redux = require 'redux'
+import redux from 'redux'
 {
   createStore
   applyMiddleware
   combineReducers
 } = redux
-SI = require 'cfx.seamless-immutable'
+import SI from 'cfx.seamless-immutable'
 
 CreateStore = (reducers, pluginList = []) ->
   createStore(
@@ -37,8 +37,8 @@ mergeReduce = (
       r[reduceName] = reduce state[reduceName], action
     r
 
-export default {
+export {
   redux
-  createStore: CreateStore
+  CreateStore
   mergeReduce
 }

@@ -2,11 +2,12 @@
   "name": "cfx.redux",
   "version": "0.0.0",
   "description": "cfx.redux",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
-    "test": "make test",
-    "clean": "make clean",
-    "build": "make build"
+    "clean": "rm -rf ./dist",
+    "build": "rollup -c",
+    "rebuild": "npm run clean; npm run build",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -22,14 +23,16 @@
   },
   "homepage": "https://github.com/react-cfx/cfx.redux#readme",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.5.1",
-    "coffeescript": "next",
+    "coffeescript": "^2.0.2",
     "ddeyes": "^0.0.4",
-    "shelljs": "^0.7.7"
+    "shelljs": "^0.7.8"
   },
   "dependencies": {
-    "cfx.seamless-immutable": "git+https://github.com/react-cfx/cfx.seamless-immutable.git",
-    "redux": "^3.6.0"
+    "cfx.rollup-plugin-coffee2": "^0.0.5",
+    "cfx.seamless-immutable": "^0.0.0",
+    "redux": "^3.7.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-alias": "^1.4.0",
+    "rollup-plugin-cleanup": "^2.0.0"
   }
 }

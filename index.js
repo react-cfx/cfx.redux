@@ -1,1 +1,5 @@
-module.exports = require('./dest/index.js').default;
+export {
+  redux,
+  CreateStore as createStore,
+  mergeReduce
+} from 'src'
