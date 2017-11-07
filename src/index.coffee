@@ -1,9 +1,14 @@
 import redux from 'redux'
+
 {
   createStore
   applyMiddleware
   combineReducers
 } = redux
+
+import { SagaMiddleware } from 'cfx.redux-saga'
+import onStateChange from 'redux-on-state-change'
+
 import SI from 'cfx.seamless-immutable'
 
 CreateStore = (reducers, pluginList = []) ->
@@ -37,8 +42,54 @@ mergeReduce = (
       r[reduceName] = reduce state[reduceName], action
     r
 
+getStore = ({
+  appName
+  reducers
+  options...
+  # sagas
+  # subscriber
+  #   async:
+  #   sync:
+}) ->
+
+  {
+    subscriber
+  } = options if options?.subscriber?
+
+  if options?.sagas?
+    SagaMW = new SagaMiddleware()
+
+  store = createStore
+    "#{appName}": reducers
+  , [
+    (
+      if options?.sagas?
+      then [
+        SagaMW.getMidleware()
+      ]
+      else []
+    )...
+    (
+      if subscriber?.async?
+      then [
+        onStateChange (args...) ->
+          subscriber.async.apply store, args
+      ]
+      else []
+    )...
+  ]
+
+  if subscriber?.sync?
+    store.onsubscribe = store.subscribe subscriber.sync
+
+  if options?.sagas?
+    SagaMW.runSagas options.sagas
+
+  store
+
 export {
   redux
   CreateStore
   mergeReduce
+  getStore
 }

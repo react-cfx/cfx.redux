@@ -1,5 +1,6 @@
 export {
   redux,
   CreateStore as createStore,
-  mergeReduce
+  mergeReduce,
+  getStore
 } from 'src'

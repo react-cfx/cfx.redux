@@ -1,6 +1,6 @@
 {
   "name": "cfx.redux",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "cfx.redux",
   "main": "dist/bundle.js",
   "scripts": {
@@ -28,9 +28,11 @@
     "shelljs": "^0.7.8"
   },
   "dependencies": {
+    "cfx.redux-saga": "^0.0.0",
     "cfx.rollup-plugin-coffee2": "^0.0.5",
     "cfx.seamless-immutable": "^0.0.0",
     "redux": "^3.7.2",
+    "redux-on-state-change": "^1.0.0",
     "rollup": "^0.50.0",
     "rollup-plugin-alias": "^1.4.0",
     "rollup-plugin-cleanup": "^2.0.0"
