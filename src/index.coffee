@@ -59,7 +59,7 @@ getStore = ({
   if options?.sagas?
     SagaMW = new SagaMiddleware()
 
-  store = createStore
+  store = CreateStore
     "#{appName}": reducers
   , [
     (
