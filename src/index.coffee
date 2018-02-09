@@ -83,7 +83,10 @@ getStore = ({
     store.onsubscribe = store.subscribe subscriber.sync
 
   if options?.sagas?
-    SagaMW.runSagas options.sagas
+    # SagaMW.runSagas options.sagas
+    store.runSagaTask = =>
+      store.sagaTask = SagaMW.runSagas options.sagas
+    store.runSagaTask()
 
   store
 
