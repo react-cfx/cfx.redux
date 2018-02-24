@@ -1,4 +1,3 @@
-import alias from 'rollup-plugin-alias'
 import {
   coffee2
   coffeepath
@@ -11,12 +10,6 @@ export default
     file: './dist/bundle.js'
     format: 'cjs'
   plugins: [
-    alias
-      resolve: [
-        '.coffee'
-        '.js'
-      ]
-      src: './src/index'
     coffee2
       bare: true
       sourceMap: true

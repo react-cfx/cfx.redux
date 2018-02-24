@@ -23,19 +23,17 @@
   },
   "homepage": "https://github.com/react-cfx/cfx.redux#readme",
   "devDependencies": {
-    "coffeescript": "^2.0.2",
-    "ddeyes": "^0.0.4",
-    "shelljs": "^0.7.8"
+    "coffee-require": "^0.0.4",
+    "ddeyes": "^0.0.6",
+    "shelljs": "^0.8.1"
   },
   "dependencies": {
     "cfx.redux-saga": "^0.0.1",
     "cfx.redux-types": "^0.0.4",
-    "cfx.rollup-plugin-coffee2": "^0.1.0",
-    "cfx.seamless-immutable": "^0.0.1",
+    "cfx.rollup-plugin-coffee2": "^0.1.4",
     "redux": "^3.7.2",
     "redux-on-state-change": "^1.0.0",
-    "rollup": "^0.50.0",
-    "rollup-plugin-alias": "^1.4.0",
+    "rollup": "^0.56.2",
     "rollup-plugin-cleanup": "^2.0.0"
   }
 }

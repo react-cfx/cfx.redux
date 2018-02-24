@@ -3,4 +3,4 @@ export {
   CreateStore as createStore,
   mergeReduce,
   getStore
-} from 'src'
+} from 'sources/index.coffee'
