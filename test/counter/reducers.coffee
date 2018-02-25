@@ -1,24 +1,17 @@
 import dd from 'ddeyes'
-import {
-  handleActions
-  merge
-} from '../../src/reduce'
+import { handleReducer } from '../../src/reduce'
 
 import initialState from './initialState'
 
-count = handleActions
+export default
+  count: handleReducer
 
-  INCREMENT: (state, action = {}) =>
-    action.payload or= 1
-    state + action.payload
+    INCREMENT: (state, action = {}) =>
+      action.payload or= 1
+      state + action.payload
 
-  DECREMENT: (state, action = {}) =>
-    action.payload or= 1
-    state - action.payload
+    DECREMENT: (state, action = {}) =>
+      action.payload or= 1
+      state - action.payload
 
-, initialState.count
-
-export default merge {
-  count
-}
-, initialState
+  , initialState.count

@@ -1,10 +1,8 @@
 # import dd from 'ddeyes'
-import * as redux from 'redux'
-{
+import {
   createStore
   applyMiddleware
-  combineReducers
-} = redux
+} from 'redux'
 import onStateChange from 'redux-on-state-change'
 import { SagaMiddleware } from 'cfx.redux-saga'
 
@@ -13,7 +11,7 @@ CreateStore = (
   pluginList = []
 ) =>
   createStore(
-    combineReducers reducers
+    reducers
     applyMiddleware.apply null
     , pluginList
   )
@@ -23,7 +21,6 @@ export {
 }
 
 export default ({
-  appName
   reducers
   options...
   # sagas
@@ -39,8 +36,7 @@ export default ({
   if options?.sagas?
     SagaMW = new SagaMiddleware()
 
-  store = CreateStore
-    "#{appName}": reducers
+  store = CreateStore reducers
   , [
     (
       if options?.sagas?

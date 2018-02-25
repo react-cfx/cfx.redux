@@ -1,4 +1,4 @@
-promiseWrapper = ({
+promiseWapper = ({
   store
   action
 }) =>
@@ -14,32 +14,21 @@ promiseWrapper = ({
           reject error
       }
 
-# interfaceConfig = (
-#   funcs
-#   {
-#     store
-#     actions
-#   }
-# ) =>
-#   (Object.keys funcs)
-#   .reduce (r, c) =>
-#     {
-#       r...
-#       "#{c}": (
-#         args...
-#       ) =>
-#         funcs["#{c}"].apply null
-#         , [
-#           args...
-#           {
-#             store
-#             actions
-#           }
-#         ]
-#     }
-#   , {}
+export default ({
+  store
+  actions
+}) =>
 
-export {
-  promiseWrapper
-  # interfaceConfig
-}
+  (
+    Object.keys actions
+  ).reduce (r, c) =>
+    {
+      r...
+      "#{c}":
+        promiseWapper {
+          store
+          action: actions[c]
+        }
+    }
+  , {}
+

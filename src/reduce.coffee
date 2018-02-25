@@ -1,63 +1,150 @@
-import dd from 'ddeyes'
+# import dd from 'ddeyes'
+import { combineReducers } from 'redux'
 import { reduxActions } from 'cfx.redux-actions'
-# import SI from 'cfx.seamless-immutable'
-# "cfx.seamless-immutable": "^0.0.1",
 
-handleActions = (reduces, initializations) =>
+handleActions = (reducers, initState) =>
 
   newReduces = (
-    Object.keys reduces
+    Object.keys reducers
   ).reduce (r, c) =>
     {
       r...
       "#{c}": (state, action = {}) =>
         if action.payload?.success? 
-          newState = reduces[c] state
+          newState = reducers[c] state
           , payload: action.payload.payload
           action.payload.success newState
         else
-          newState = reduces[c] state, action
+          newState = reducers[c] state, action
         newState
     }
   , {}
 
-  reduxActions.handleActions newReduces, initializations
+  reduxActions.handleActions newReduces, initState
 
-merge = (
-  reduceMap
-  defaultState
-  # options
+handleReducer = (
+  reducer
+  initState
 ) =>
+  {
+    reducer
+    initState
+  }
 
-  unless defaultState
-    throw new Error 'must be provided a default state.'
+# valuesOfObj = (Obj) =>
+#   (
+#     Object.keys Obj
+#   ).reduce (r, c) =>
+#     [
+#       r...
+#       Obj[c]
+#     ]
+#   , []
 
+mergeReducer = (
+  reduceMap 
+) =>
   (
-    state = defaultState
-    action
-  ) =>
+    Object.keys reduceMap
+  ).reduce (r, c, i, a) =>
 
-    # isImmutable =
-    #   unless options?.immutable?
-    #   then true # default true
-    #   else
-    #     if options.immutable is false
-    #     then false else true
+    if reduceMap[c]?.reducer? and (
+      typeof reduceMap[c]?.reducer is 'object'
+    )
 
-    # state = SI.new state if isImmutable
+    then (
 
-    (
-      Object.keys reduceMap
-    ).reduce (r, reduceName) => 
-      _reduce = reduceMap[reduceName]
-      {
-        r...
-        "#{reduceName}": _reduce state[reduceName], action
+      # _c = handleActions reduceMap[c].reducer
+      # , reduceMap[c].initState
+
+      _reducers = {
+        r.reducer...
+        "#{c}":
+          handleActions reduceMap[c].reducer
+          , reduceMap[c].initState
       }
-    , {}
 
+      {
+        reducer:
+          if a.length is (i + 1)
+          then combineReducers _reducers
+          else _reducers
+        initState: {
+          r.initState...
+          "#{c}": reduceMap[c].initState
+        }
+        constants: {
+          r.constants...
+          (
+            (
+              Object.keys reduceMap[c].reducer
+            ).reduce (_r, _c) =>
+              {
+                _r...
+                "#{_c}": _c
+              }
+            , {}
+          )...
+        }
+      }
+    )
+
+    else (
+      _mergedObj = mergeReducer reduceMap[c]
+      {
+        reducer: {
+          r.reducer...
+          "#{c}": _mergedObj.reducer
+        }
+        initState: {
+          r.initState...
+          "#{c}": _mergedObj.initState
+        }
+        constants: r.constants
+      }
+    ) 
+  ,
+    reducer: {}
+    initState: {}
+    constants: {}
 
 export {
-  handleActions
-  merge
+  handleReducer
+  mergeReducer
 }
+
+# import SI from 'cfx.seamless-immutable'
+# "cfx.seamless-immutable": "^0.0.1",
+#
+# _merge = (
+#   reduceMap
+#   defaultState
+#   # options
+# ) =>
+
+#   unless defaultState
+#     throw new Error 'must be provided a default state.'
+
+#   (
+#     state = defaultState
+#     action
+#   ) =>
+
+#     # isImmutable =
+#     #   unless options?.immutable?
+#     #   then true # default true
+#     #   else
+#     #     if options.immutable is false
+#     #     then false else true
+
+#     # state = SI.new state if isImmutable
+
+#     (
+#       Object.keys reduceMap
+#     ).reduce (r, reduceName) => 
+#       _reduce = reduceMap[reduceName]
+#       {
+#         r...
+#         "#{reduceName}": _reduce state[reduceName], action
+#       }
+#     , {

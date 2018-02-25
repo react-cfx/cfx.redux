@@ -1,9 +1,10 @@
+import createRedux from '../src/createRedux'
 import createStore from '../src/createStore'
+import promiseWapper from '../src/dispatch'
 
-export default (({
+export default ({
   appName
   redux: {
-    constants
     initializations
     reducers
     sagas
@@ -12,6 +13,12 @@ export default (({
   # async:
   # sync:
 }) =>
+
+  redux = createRedux {
+    initializations
+    reducers
+    sagas
+  }
 
   store = createStore {
     appName
@@ -28,14 +35,26 @@ export default (({
     )...
   }
 
+  dispatch = promiseWapper {
+    store
+    actions: redux.constatns.actions
+  }
+
   {
     store
     dispatch
     _: {
-      constants
-      actions
-      initializations
-      reducers
-      sagas
+      redux
+        # constants
+        # types
+        # actions
+        # initStates
+        # reducers
+        # sagas
+      tools: {
+        createRedux
+        createStore
+        promiseWapper
+      }
     }
   }
