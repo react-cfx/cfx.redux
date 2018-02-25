@@ -1,6 +1,6 @@
-import dd from 'ddeyes'
-import { handleReducer } from '../../src/reduce'
+# import dd from 'ddeyes'
 
+import { handleReducer } from '../../src/reduce'
 import initialState from './initialState'
 
 export default

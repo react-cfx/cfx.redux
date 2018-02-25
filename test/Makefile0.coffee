@@ -1,10 +1,11 @@
 import dd from 'ddeyes'
 import 'shelljs/make'
-import reducers from './counter/reducers'
+import reducerObjs from './counter/reducers'
 import { mergeReducer } from '../src/reduce'
 import createStore from '../src/createStore'
 # import { reduxActions } from 'cfx.redux-actions'
 import actions from './counter/actions'
+import createRedux from '../src/createRedux'
 
 target.all = =>
   dd 'Hello World!!!'
@@ -12,13 +13,22 @@ target.all = =>
 target.reducers = =>
 
   # dd reducers
+  {
+    reducers
+    initState
+    constants
+  } = mergeReducer reducerObjs
+
+  dd {
+    initState
+    constants
+  }
 
   # (
   #   Object.keys reducers
   # ).forEach (c, i, a) =>
   #   dd Object.keys reducers[c].reducer
 
-  dd mergeReducer reducers
 
   # myReducers = (
   #   mergeReducer reducers
@@ -53,3 +63,22 @@ target.reducers = =>
   # dd myStore.getState()
 
   # myStore.dispatch action
+
+target.redux = =>
+
+  myRedux = createRedux
+    reducers: reducerObjs
+
+  dd myRedux
+
+  myStore = createStore
+    reducers: myRedux.reducers
+    subscriber:
+      sync: (store) =>
+        dd store.getState()
+
+  dd myStore.getState()
+
+  action = myRedux.actions.increment 5
+
+  myStore.dispatch action
