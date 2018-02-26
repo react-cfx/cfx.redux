@@ -6,6 +6,7 @@ export default ({
   reducers
   sagas
 }) =>
+
   _ = {
     reducers
   }

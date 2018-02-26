@@ -1,11 +1,10 @@
+import dd from 'ddeyes'
 import createRedux from '../src/createRedux'
 import createStore from '../src/createStore'
 import promiseWapper from '../src/dispatch'
 
 export default ({
-  appName
   redux: {
-    initializations
     reducers
     sagas
   }
@@ -15,29 +14,27 @@ export default ({
 }) =>
 
   redux = createRedux {
-    initializations
     reducers
     sagas
   }
 
   store = createStore {
-    appName
-    reducers
+    reducers: redux.reducers
     (
-      if sagas?
-      then { sagas }
+      if redux.sagas?
+      then sagas: redux.sagas
       else {}
     )...
     (
       if subscriber?
       then { subscriber }
-      esle {}
+      else {}
     )...
   }
 
   dispatch = promiseWapper {
     store
-    actions: redux.constatns.actions
+    actions: redux.actions
   }
 
   {
@@ -45,12 +42,6 @@ export default ({
     dispatch
     _: {
       redux
-        # constants
-        # types
-        # actions
-        # initStates
-        # reducers
-        # sagas
       tools: {
         createRedux
         createStore

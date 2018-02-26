@@ -1,8 +1,11 @@
 import dd from 'ddeyes'
 import 'shelljs/make'
+
 import reducerObjs from './counter/reducers'
+
 import { mergeReducer } from '../src/reduce'
 import createStore from '../src/createStore'
+import createApp from '../src/createApp'
 # import { reduxActions } from 'cfx.redux-actions'
 import actions from './counter/actions'
 import createRedux from '../src/createRedux'
@@ -82,3 +85,16 @@ target.redux = =>
   action = myRedux.actions.increment 5
 
   myStore.dispatch action
+
+target.createApp = =>
+
+  myApp = createApp
+    redux:
+      reducers: reducerObjs
+    subscriber:
+      sync: (store) =>
+        dd store.getState()
+
+  dd myApp.store.getState()
+
+  dd await myApp.dispatch.increment 5
