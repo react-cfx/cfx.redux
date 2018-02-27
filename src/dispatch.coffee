@@ -10,7 +10,7 @@ promiseWapper = ({
         actionParams...
         success: (data) =>
           resolve data
-        fail: (error) =>
+        failure: (error) =>
           reject error
       }
 

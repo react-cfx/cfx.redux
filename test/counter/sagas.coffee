@@ -1,8 +1,6 @@
 # import dd from 'ddeyes'
-import {
-  toSagas
-  mergeSagas
-} from '../../src/sagas'
+
+import { toSagas } from '../../src/sagas'
 import {
   sagaEffects
   dispatch
@@ -16,18 +14,18 @@ export default
 
   count: toSagas
 
-    INCREMENT_ASYNC: (action) ->
+    INCREMENT_ASYNC: ({ types }) => (action) ->
 
       yield sagaEffects.call delay, 1000
       yield dispatch action
-      , INCREMENT
+      , types.INCREMENT
 
       success: true
 
-    DECREMENT_ASYNC: (action) ->
+    DECREMENT_ASYNC: ({ types }) => (action) ->
 
       yield sagaEffects.call delay, 1000
       yield dispatch action
-      , DECREMENT
+      , types.DECREMENT
 
       success: true

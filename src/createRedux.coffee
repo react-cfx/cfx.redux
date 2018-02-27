@@ -35,12 +35,14 @@ export default ({
     reducers: toActionsTypes _.constants.reducers
     sagas: toActionsTypes _.constants.sagas
 
+  { types } = constants
+
   {
     constants
-    types: constants.types
+    types
     actions: createActions constants.actions
     initStates: merged.reducers.initStates
     reducers: merged.reducers.reducers
-    sagas: merged.sagas.sagas
+    sagas: merged.sagas.sagas { types }
     _
   }

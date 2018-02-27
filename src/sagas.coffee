@@ -15,21 +15,26 @@ createSaga = ({
     then sagaEffects.takeLatest
     else sagaEffects.takeEvery
 
-  -> yield func sagaName, saga
+  ({ types }) => ->
+    yield func sagaName
+    ,
+      saga { types }
 
-promiseSaga = (saga) =>
+promiseSaga = (
+  saga
+) =>
 
   (action = {}) ->
 
     if action.payload?.success?
       {
         success
-        fault
+        failure
       } = yield from saga action.payload.payload
       if success?
         action.payload.success success
-      else if action.payload?.fault?
-        action.payload.fault fault
+      else if action.payload?.failure?
+        action.payload.failure failure
 
     else
       result = yield from saga action
@@ -67,7 +72,8 @@ toSagas = (
 mergeSagas = (
   sagaMap
 ) =>
-  (
+
+  result = (
     Object.keys sagaMap
   ).reduce (r, c) =>
 
@@ -79,7 +85,7 @@ mergeSagas = (
         _r.sagas...
         (
           if typeof sagaMap[c][_c] is 'function'
-          then [ sagaMap[c][_c] ]
+          then [ sagaMap[c][_c] { types } ]
           else []
         )...
       ]
@@ -93,6 +99,17 @@ mergeSagas = (
   ,
     sagas: []
     constants: {}
+
+  {
+    result...
+    sagas: ({ types }) =>
+      result.sagas.reduce (r, c) =>
+        [
+          r...
+          c { types }
+        ]
+      , []
+  }
 
 export {
   toSagas
