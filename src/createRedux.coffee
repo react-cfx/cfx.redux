@@ -1,6 +1,6 @@
 import { toActionsTypes } from 'cfx.redux-types'
 import { createActions } from 'cfx.redux-actions'
-import { mergeReducer } from './reduce'
+import { mergeReducers } from './reducers'
 
 export default ({
   reducers
@@ -12,10 +12,10 @@ export default ({
   }
 
   {
-    reducer
-    initState
+    reducers
+    initStates
     constants
-  } = mergeReducer _.reducers
+  } = mergeReducers _.reducers
 
   _ = {
     _...
@@ -30,8 +30,8 @@ export default ({
     constants
     types: constants.types
     actions: createActions constants.actions
-    initState
-    reducers: reducer
+    initStates
+    reducers: reducers
     sagas
     _
   }

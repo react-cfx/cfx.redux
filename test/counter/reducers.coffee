@@ -1,10 +1,11 @@
 # import dd from 'ddeyes'
 
-import { handleReducer } from '../../src/reduce'
-import initialState from './initialState'
+import { toReducer } from '../../src/reducers'
+import initStates from './initStates'
 
 export default
-  count: handleReducer
+
+  count: toReducer
 
     INCREMENT: (state, action = {}) =>
       action.payload or= 1
@@ -14,4 +15,4 @@ export default
       action.payload or= 1
       state - action.payload
 
-  , initialState.count
+  , initStates.count

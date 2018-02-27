@@ -1,4 +1,4 @@
-import dd from 'ddeyes'
+# import dd from 'ddeyes'
 import createRedux from '../src/createRedux'
 import createStore from '../src/createStore'
 import promiseWapper from '../src/dispatch'
@@ -40,12 +40,5 @@ export default ({
   {
     store
     dispatch
-    _: {
-      redux
-      tools: {
-        createRedux
-        createStore
-        promiseWapper
-      }
-    }
+    _: redux
   }

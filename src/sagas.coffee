@@ -1,9 +1,8 @@
 import dd from 'ddeyes'
-import {
-  sagaEffects
-} from 'cfx.redux-saga'
+import { sagaEffects } from 'cfx.redux-saga'
 
-handleActions = (sagas) =>
+toSagas = (sagas) =>
+
   newSagas = (
     Object.keys sagas
   ).reduce (r, c) =>
@@ -23,6 +22,7 @@ handleActions = (sagas) =>
           result = yield from sagas[c] action
         result
     }
+
   , {}
 
 checkTakeFunc = (takeStr = 'every') =>
@@ -53,6 +53,6 @@ merge = (
   , []
 
 export {
-  handleActions
-  merge
+  toSagas
+  mergeSagas
 }

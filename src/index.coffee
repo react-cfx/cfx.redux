@@ -1,10 +1,15 @@
-import redux. {
-  CreateStore
-  mergeReduce 
-} from './redux'
+import CreateRedux from './createRedux'
+import CreateStore from './createStore'
+import CreateApp from './createApp'
+import {
+  toReducers
+  mergeReducers
+} from './reducers'
 
 export {
-  redux
+  CreateRedux
   CreateStore
-  mergeReduce
+  CreateApp
+  toReducers
+  mergeReducers
 }

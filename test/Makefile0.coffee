@@ -1,31 +1,32 @@
 import dd from 'ddeyes'
 import 'shelljs/make'
-
-import reducerObjs from './counter/reducers'
-
-import { mergeReducer } from '../src/reduce'
-import createStore from '../src/createStore'
-import createApp from '../src/createApp'
-# import { reduxActions } from 'cfx.redux-actions'
-import actions from './counter/actions'
-import createRedux from '../src/createRedux'
+import reducers from './tasks/reducers'
+import createRedux from './tasks/createRedux'
+import createStore from './tasks/createStore'
+import createApp from './tasks/createApp'
 
 target.all = =>
   dd 'Hello World!!!'
 
-target.reducers = =>
+target.reducers = => reducers()
+target.createRedux = => createRedux()
+
+target.createStore = => createStore()
+target.createApp = => createApp()
+
+# target.reducers = =>
 
   # dd reducers
-  {
-    reducers
-    initState
-    constants
-  } = mergeReducer reducerObjs
+  # {
+  #   reducers
+  #   initState
+  #   constants
+  # } = mergeReducer reducerObjs
 
-  dd {
-    initState
-    constants
-  }
+  # dd {
+  #   initState
+  #   constants
+  # }
 
   # (
   #   Object.keys reducers
@@ -66,35 +67,3 @@ target.reducers = =>
   # dd myStore.getState()
 
   # myStore.dispatch action
-
-target.redux = =>
-
-  myRedux = createRedux
-    reducers: reducerObjs
-
-  dd myRedux
-
-  myStore = createStore
-    reducers: myRedux.reducers
-    subscriber:
-      sync: (store) =>
-        dd store.getState()
-
-  dd myStore.getState()
-
-  action = myRedux.actions.increment 5
-
-  myStore.dispatch action
-
-target.createApp = =>
-
-  myApp = createApp
-    redux:
-      reducers: reducerObjs
-    subscriber:
-      sync: (store) =>
-        dd store.getState()
-
-  dd myApp.store.getState()
-
-  dd await myApp.dispatch.increment 5

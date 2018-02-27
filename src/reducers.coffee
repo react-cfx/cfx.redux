@@ -2,7 +2,10 @@
 import { combineReducers } from 'redux'
 import { reduxActions } from 'cfx.redux-actions'
 
-handleActions = (reducers, initState) =>
+handleActions = (
+  reducers
+  initState
+) =>
 
   newReduces = (
     Object.keys reducers
@@ -22,14 +25,13 @@ handleActions = (reducers, initState) =>
 
   reduxActions.handleActions newReduces, initState
 
-handleReducer = (
+toReducer = (
   reducer
   initState
-) =>
-  {
-    reducer
-    initState
-  }
+) => {
+  reducer
+  initState
+}
 
 # valuesOfObj = (Obj) =>
 #   (
@@ -41,7 +43,7 @@ handleReducer = (
 #     ]
 #   , []
 
-mergeReducer = (
+mergeReducers = (
   reduceMap 
 ) =>
   (
@@ -54,9 +56,6 @@ mergeReducer = (
 
     then (
 
-      # _c = handleActions reduceMap[c].reducer
-      # , reduceMap[c].initState
-
       _reducers = {
         r.reducer...
         "#{c}":
@@ -65,11 +64,11 @@ mergeReducer = (
       }
 
       {
-        reducer:
+        reducers:
           if a.length is (i + 1)
           then combineReducers _reducers
           else _reducers
-        initState: {
+        initStates: {
           r.initState...
           "#{c}": reduceMap[c].initState
         }
@@ -92,11 +91,11 @@ mergeReducer = (
     else (
       _mergedObj = mergeReducer reduceMap[c]
       {
-        reducer: {
+        reducers: {
           r.reducer...
           "#{c}": _mergedObj.reducer
         }
-        initState: {
+        initStates: {
           r.initState...
           "#{c}": _mergedObj.initState
         }
@@ -104,13 +103,13 @@ mergeReducer = (
       }
     ) 
   ,
-    reducer: {}
-    initState: {}
+    reducers: {}
+    initStates: {}
     constants: {}
 
 export {
-  handleReducer
-  mergeReducer
+  toReducer
+  mergeReducers
 }
 
 # import SI from 'cfx.seamless-immutable'
