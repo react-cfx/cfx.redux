@@ -23,21 +23,20 @@ createSaga = ({
 promiseSaga = (
   saga
 ) =>
-
-  (action = {}) ->
+  ({ types }) => ( action = {} ) ->
 
     if action.payload?.success?
       {
         success
         failure
-      } = yield from saga action.payload.payload
+      } = yield from ( saga { types } ) action.payload.payload
       if success?
         action.payload.success success
       else if action.payload?.failure?
         action.payload.failure failure
 
     else
-      result = yield from saga action
+      result = yield from ( saga { types } ) action
 
     result
 
@@ -85,7 +84,7 @@ mergeSagas = (
         _r.sagas...
         (
           if typeof sagaMap[c][_c] is 'function'
-          then [ sagaMap[c][_c] { types } ]
+          then [ sagaMap[c][_c] ]
           else []
         )...
       ]

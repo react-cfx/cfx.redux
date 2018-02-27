@@ -28,7 +28,7 @@ export default =>
   dd myStore.getState()
 
   syncAction = redux.actions.increment 5
-  asyncAction = redux.actions.incrementAsync 5
-
   myStore.dispatch syncAction
+
+  asyncAction = redux.actions.incrementAsync 5
   myStore.dispatch asyncAction
