@@ -1,11 +1,13 @@
 import dd from 'ddeyes'
 import createRedux from '../../src/createRedux'
 import reducersObj from '../counter/reducers'
+import sagasObj from '../counter/sagas'
 
 export default =>
 
   redux = createRedux
     reducers: reducersObj
+    sagas: sagasObj
 
   {
     constants

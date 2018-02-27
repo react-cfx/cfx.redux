@@ -12,22 +12,22 @@ delay = (ms) =>
   new Promise (resolve) =>
     setTimeout resolve, ms
 
-counter = toSagas
+export default
 
-  INCREMENT_ASYNC: (action) ->
+  count: toSagas
 
-    yield sagaEffects.call delay, 1000
-    yield dispatch action
-    , INCREMENT
+    INCREMENT_ASYNC: (action) ->
 
-    success: true
+      yield sagaEffects.call delay, 1000
+      yield dispatch action
+      , INCREMENT
 
-  DECREMENT_ASYNC: (action) ->
+      success: true
 
-    yield sagaEffects.call delay, 1000
-    yield dispatch action
-    , DECREMENT
+    DECREMENT_ASYNC: (action) ->
 
-    success: true
+      yield sagaEffects.call delay, 1000
+      yield dispatch action
+      , DECREMENT
 
-export default mergeSagas counter
+      success: true

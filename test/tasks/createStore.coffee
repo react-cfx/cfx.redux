@@ -9,12 +9,26 @@ export default =>
 
   myStore = createStore
     reducers: redux.reducers
+    sagas: redux.sagas
     subscriber:
       sync: (store) =>
         dd store.getState()
+      async: (
+        prevState
+        nextState
+        action 
+        dispatch
+      ) =>
+        dd async: {
+          prevState
+          nextState
+          action
+        }
 
   dd myStore.getState()
 
-  action = redux.actions.increment 5
+  syncAction = redux.actions.increment 5
+  asyncAction = redux.actions.incrementAsync 5
 
-  myStore.dispatch action
+  myStore.dispatch syncAction
+  myStore.dispatch asyncAction

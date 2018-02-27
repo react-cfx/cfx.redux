@@ -1,4 +1,5 @@
 # import dd from 'ddeyes'
+
 import { combineReducers } from 'redux'
 import { reduxActions } from 'cfx.redux-actions'
 
@@ -57,7 +58,7 @@ mergeReducers = (
     then (
 
       _reducers = {
-        r.reducer...
+        r.reducers...
         "#{c}":
           handleActions reduceMap[c].reducer
           , reduceMap[c].initState
@@ -69,7 +70,7 @@ mergeReducers = (
           then combineReducers _reducers
           else _reducers
         initStates: {
-          r.initState...
+          r.initStates...
           "#{c}": reduceMap[c].initState
         }
         constants: {
@@ -89,15 +90,15 @@ mergeReducers = (
     )
 
     else (
-      _mergedObj = mergeReducer reduceMap[c]
+      _mergedObj = mergeReducers reduceMap[c]
       {
         reducers: {
-          r.reducer...
-          "#{c}": _mergedObj.reducer
+          r.reducers...
+          "#{c}": _mergedObj.reducers
         }
         initStates: {
-          r.initState...
-          "#{c}": _mergedObj.initState
+          r.initStates...
+          "#{c}": _mergedObj.initStates
         }
         constants: r.constants
       }
