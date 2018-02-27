@@ -64,44 +64,48 @@ mergeReducers = (
           , reduceMap[c].initState
       }
 
-      {
-        reducers:
-          if a.length is (i + 1)
-          then combineReducers _reducers
-          else _reducers
-        initStates: {
-          r.initStates...
-          "#{c}": reduceMap[c].initState
-        }
-        constants: {
-          r.constants...
-          (
-            (
-              Object.keys reduceMap[c].reducer
-            ).reduce (_r, _c) =>
-              {
-                _r...
-                "#{_c}": _c
-              }
-            , {}
-          )...
-        }
+      reducers:
+        if a.length is (i + 1)
+        then combineReducers _reducers
+        else _reducers
+
+      initStates: {
+        r.initStates...
+        "#{c}": reduceMap[c].initState
       }
+
+      constants: {
+        r.constants...
+        (
+          (
+            Object.keys reduceMap[c].reducer
+          ).reduce (_r, _c) =>
+            {
+              _r...
+              "#{_c}": _c
+            }
+          , {}
+        )...
+      }
+
     )
 
     else (
+
       _mergedObj = mergeReducers reduceMap[c]
-      {
-        reducers: {
-          r.reducers...
-          "#{c}": _mergedObj.reducers
-        }
-        initStates: {
-          r.initStates...
-          "#{c}": _mergedObj.initStates
-        }
-        constants: r.constants
+
+      reducers: {
+        r.reducers...
+        "#{c}": _mergedObj.reducers
       }
+
+      initStates: {
+        r.initStates...
+        "#{c}": _mergedObj.initStates
+      }
+
+      constants: r.constants
+
     ) 
   ,
     reducers: {}

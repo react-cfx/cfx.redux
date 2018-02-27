@@ -1,5 +1,7 @@
 import dd from 'ddeyes'
-import reducersObj from '../counter/reducers'
+import {
+  reducers as reducersObj
+} from '../counter'
 import { mergeReducers } from '../../src/reducers'
 
 export default =>

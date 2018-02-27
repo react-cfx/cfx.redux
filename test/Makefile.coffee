@@ -1,11 +1,13 @@
 import dd from 'ddeyes'
 import 'shelljs/make'
 
-import reducers from './tasks/reducers'
-import sagas from './tasks/sagas'
-import createRedux from './tasks/createRedux'
-import createStore from './tasks/createStore'
-import createApp from './tasks/createApp'
+import {
+  reducers 
+  sagas
+  createRedux
+  createStore
+  createApp
+} from './tasks'
 
 target.all = =>
   dd 'Hello World!!!'

@@ -1,5 +1,7 @@
 import dd from 'ddeyes'
-import sagasObj from '../counter/sagas'
+import {
+  sagas as sagasObj
+} from '../counter'
 import { mergeSagas } from '../../src/sagas'
 
 export default =>

@@ -1,7 +1,9 @@
 import dd from 'ddeyes'
 import createRedux from '../../src/createRedux'
-import reducersObj from '../counter/reducers'
-import sagasObj from '../counter/sagas'
+import {
+  reducers as reducersObj
+  sagas as sagasObj
+} from '../counter'
 
 export default =>
 
