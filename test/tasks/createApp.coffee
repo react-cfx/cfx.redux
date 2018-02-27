@@ -1,10 +1,11 @@
 import dd from 'ddeyes'
 
-import createApp from '../../src/createApp'
 import {
   reducers as reducersObj
   sagas as sagasObj
 } from '../counter'
+# import { createApp } from '../../src'
+import { createApp } from '../../dist/bundle'
 
 export default =>
 

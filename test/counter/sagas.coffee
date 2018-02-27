@@ -1,6 +1,6 @@
 # import dd from 'ddeyes'
 
-import { toSagas } from '../../src/sagas'
+import { toSaga } from '../../src'
 import {
   sagaEffects
   dispatch
@@ -12,7 +12,7 @@ delay = (ms) =>
 
 export default
 
-  count: toSagas
+  count: toSaga
 
     INCREMENT_ASYNC: ({ types }) => (action) ->
 

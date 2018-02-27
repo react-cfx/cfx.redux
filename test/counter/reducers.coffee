@@ -1,6 +1,6 @@
 # import dd from 'ddeyes'
 
-import { toReducer } from '../../src/reducers'
+import { toReducer } from '../../src'
 import initStates from './initStates'
 
 export default

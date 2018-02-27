@@ -2,7 +2,9 @@ import dd from 'ddeyes'
 import {
   sagas as sagasObj
 } from '../counter'
-import { mergeSagas } from '../../src/sagas'
+
+# import { mergeSagas } from '../../src'
+import { mergeSagas } from '../../dist/bundle'
 
 export default =>
 

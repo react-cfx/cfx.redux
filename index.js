@@ -1,6 +1,9 @@
 export {
-  redux,
-  CreateStore as createStore,
-  mergeReduce,
-  getStore
-} from 'sources/index.coffee'
+  createRedux,
+  createStore,
+  createApp,
+  toReducer,
+  mergeReducers,
+  toSaga,
+  mergeSagas
+} from './src/index.coffee';

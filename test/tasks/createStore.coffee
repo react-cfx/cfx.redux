@@ -1,7 +1,8 @@
 import dd from 'ddeyes'
 
 import createRedux from './createRedux'
-import createStore from '../../src/createStore'
+# import { createStore } from '../../src'
+import { createStore } from '../../dist/bundle'
 
 export default =>
 

@@ -1,9 +1,11 @@
 import dd from 'ddeyes'
-import createRedux from '../../src/createRedux'
 import {
   reducers as reducersObj
   sagas as sagasObj
 } from '../counter'
+
+# import { createRedux } from '../../src'
+import { createRedux } from '../../dist/bundle'
 
 export default =>
 

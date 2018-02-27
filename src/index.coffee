@@ -1,15 +1,21 @@
-import CreateRedux from './createRedux'
-import CreateStore from './createStore'
-import CreateApp from './createApp'
+import createRedux from './createRedux'
+import createStore from './createStore'
+import createApp from './createApp'
 import {
-  toReducers
+  toReducer
   mergeReducers
 } from './reducers'
+import {
+  toSaga
+  mergeSagas
+} from './sagas'
 
 export {
-  CreateRedux
-  CreateStore
-  CreateApp
-  toReducers
+  createRedux
+  createStore
+  createApp
+  toReducer
   mergeReducers
+  toSaga
+  mergeSagas
 }

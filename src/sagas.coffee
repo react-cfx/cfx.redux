@@ -40,7 +40,7 @@ promiseSaga = (
 
     result
 
-toSagas = (
+toSaga = (
   sagasMap
 ) =>
 
@@ -111,6 +111,6 @@ mergeSagas = (
   }
 
 export {
-  toSagas
+  toSaga
   mergeSagas
 }

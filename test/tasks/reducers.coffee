@@ -2,7 +2,9 @@ import dd from 'ddeyes'
 import {
   reducers as reducersObj
 } from '../counter'
-import { mergeReducers } from '../../src/reducers'
+
+# import { mergeReducers } from '../../src'
+import { mergeReducers } from '../../dist/bundle'
 
 export default =>
 
