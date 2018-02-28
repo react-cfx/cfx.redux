@@ -29,7 +29,7 @@ promiseSaga = (
       {
         success
         failure
-      } = yield from ( saga { types } ) action.payload.payload
+      } = yield from ( saga { types } ) action.payload
       if success?
         action.payload.success success
       else if action.payload?.failure?

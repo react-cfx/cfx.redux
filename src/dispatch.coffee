@@ -1,3 +1,5 @@
+# import dd from 'ddeyes'
+
 promiseWapper = ({
   store
   action
@@ -6,13 +8,12 @@ promiseWapper = ({
   ( actionParams = {} ) =>
 
     new Promise (resolve, reject) =>
-      store.dispatch action {
-        actionParams...
+      store.dispatch action
+        payload: actionParams
         success: (data) =>
           resolve data
         failure: (error) =>
           reject error
-      }
 
 export default ({
   store

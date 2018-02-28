@@ -34,5 +34,5 @@ export default =>
 
   myApp.store.dispatch action
 
-  dd await myApp.dispatch.increment 1
-  dd await myApp.dispatch.incrementAsync 1
+  dd await myApp.dispatch.increment 2
+  dd await myApp.dispatch.incrementAsync 3
