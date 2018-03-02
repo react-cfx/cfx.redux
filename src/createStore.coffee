@@ -1,5 +1,4 @@
 # import dd from 'ddeyes'
-
 import {
   createStore
   applyMiddleware
@@ -23,47 +22,39 @@ export {
 
 export default ({
   reducers
-  options...
-  # sagas
-  # subscriber
-  #   async:
-  #   sync:
+  sagas
+  onSubscribe
+  onChange
 }) =>
 
-  {
-    subscriber
-  } = options if options?.subscriber?
-
-  if options?.sagas?
-    SagaMW = new SagaMiddleware()
+  SagaMW = new SagaMiddleware() if sagas?
 
   store = CreateStore reducers
   , [
     (
-      if options?.sagas?
+      if sagas?
       then [
         SagaMW.getMidleware()
       ]
       else []
     )...
     (
-      if subscriber?.async?
+      if onChange?
       then [
-        onStateChange (args...) ->
-          subscriber.async.apply store, args
+        onStateChange (args...) =>
+          onChange.apply store, args
       ]
       else []
     )...
   ]
 
-  if subscriber?.sync?
+  if onSubscribe?
     store.onsubscribe = store.subscribe =>
-      subscriber.sync.call store, store
+      onSubscribe.call store, store
 
-  if options?.sagas?
-    # SagaMW.runSagas options.sagas
+  if sagas?
     store.runSagaTask = =>
-      store.sagaTask = SagaMW.runSagas options.sagas
+      store.sagaTask = SagaMW.runSagas sagas
     store.runSagaTask()
 
   store

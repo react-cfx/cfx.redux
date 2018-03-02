@@ -4,29 +4,26 @@ import {
   reducers as reducersObj
   sagas as sagasObj
 } from '../counter'
-# import { createApp } from '../../src'
-import { createApp } from '../../dist/bundle'
+import { createApp } from './cfxRedux'
 
 export default =>
 
   myApp = createApp
-    redux:
-      reducers: reducersObj
-      sagas: sagasObj
-    subscriber:
-      sync: (store) =>
-        dd store.getState()
-      async: (
+    reducers: reducersObj
+    sagas: sagasObj
+    onSubscribe: (store) =>
+      dd store.getState()
+    onChange: (
+      prevState
+      nextState
+      action 
+      dispatch
+    ) =>
+      dd async: {
         prevState
         nextState
-        action 
-        dispatch
-      ) =>
-        dd async: {
-          prevState
-          nextState
-          action
-        }
+        action
+      }
 
   dd myApp.store.getState()
 

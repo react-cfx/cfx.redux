@@ -10,7 +10,11 @@ import {
 } from './tasks'
 
 target.all = =>
-  dd 'Hello World!!!'
+  reducers()
+  sagas()
+  createRedux()
+  createStore()
+  createApp()
 
 target.reducers = => reducers()
 target.sagas = => sagas()

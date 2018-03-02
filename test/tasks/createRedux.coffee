@@ -4,8 +4,7 @@ import {
   sagas as sagasObj
 } from '../counter'
 
-# import { createRedux } from '../../src'
-import { createRedux } from '../../dist/bundle'
+import { createRedux } from './cfxRedux'
 
 export default =>
 

@@ -1,8 +1,7 @@
 import dd from 'ddeyes'
 
 import createRedux from './createRedux'
-# import { createStore } from '../../src'
-import { createStore } from '../../dist/bundle'
+import { createStore } from './cfxRedux'
 
 export default =>
 
@@ -11,20 +10,19 @@ export default =>
   myStore = createStore
     reducers: redux.reducers
     sagas: redux.sagas
-    subscriber:
-      sync: (store) =>
-        dd store.getState()
-      async: (
+    onSubscribe: (store) =>
+      dd store.getState()
+    onChange: (
+      prevState
+      nextState
+      action 
+      dispatch
+    ) =>
+      dd async: {
         prevState
         nextState
-        action 
-        dispatch
-      ) =>
-        dd async: {
-          prevState
-          nextState
-          action
-        }
+        action
+      }
 
   dd myStore.getState()
 

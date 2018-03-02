@@ -1,3 +1,4 @@
+# import dd from 'ddeyes'
 import {
   toActionsTypes
   mergeActionsTypes
@@ -13,16 +14,30 @@ export default ({
 
   _ = {
     reducers
-    sagas
+    (
+      if sagas?
+      then { sagas }
+      else {}
+    )...
   }
 
-  merged =
+  merged = {
     reducers: mergeReducers _.reducers
-    sagas: mergeSagas _.sagas if _.sagas?
-  
-  constants =
+    (
+      if _.sagas?
+      then sagas: mergeSagas _.sagas
+      else {}
+    )...
+  }
+
+  constants = {
     reducers: merged.reducers.constants
-    sagas: merged.sagas.constants
+    (
+      if _.sagas?
+      then sagas: merged.sagas.constants
+      else {}
+    )...
+  }
 
   _ = {
     _...
@@ -31,9 +46,14 @@ export default ({
     }...
   }
 
-  constants = mergeActionsTypes
+  constants = mergeActionsTypes {
     reducers: toActionsTypes _.constants.reducers
-    sagas: toActionsTypes _.constants.sagas
+    (
+      if _.sagas?
+      then sagas: toActionsTypes _.constants.sagas
+      else {}
+    )...
+  }
 
   { types } = constants
 
@@ -43,6 +63,10 @@ export default ({
     actions: createActions constants.actions
     initStates: merged.reducers.initStates
     reducers: merged.reducers.reducers
-    sagas: merged.sagas.sagas { types }
+    (
+      if _.sagas?
+      then sagas: merged.sagas.sagas { types }
+      else {}
+    )...
     _
   }

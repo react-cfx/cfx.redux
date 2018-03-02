@@ -3,8 +3,7 @@ import {
   sagas as sagasObj
 } from '../counter'
 
-# import { mergeSagas } from '../../src'
-import { mergeSagas } from '../../dist/bundle'
+import { mergeSagas } from './cfxRedux'
 
 export default =>
 

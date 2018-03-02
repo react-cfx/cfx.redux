@@ -1,17 +1,13 @@
 # import dd from 'ddeyes'
-
 import createRedux from '../src/createRedux'
 import createStore from '../src/createStore'
 import promiseWapper from '../src/dispatch'
 
 export default ({
-  redux: {
-    reducers
-    sagas
-  }
-  subscriber
-  # async:
-  # sync:
+  reducers
+  sagas
+  onSubscribe
+  onChange
 }) =>
 
   redux = createRedux {
@@ -21,16 +17,9 @@ export default ({
 
   store = createStore {
     reducers: redux.reducers
-    (
-      if redux.sagas?
-      then sagas: redux.sagas
-      else {}
-    )...
-    (
-      if subscriber?
-      then { subscriber }
-      else {}
-    )...
+    sagas: redux.sagas
+    onSubscribe
+    onChange
   }
 
   dispatch = promiseWapper {

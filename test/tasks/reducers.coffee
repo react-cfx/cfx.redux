@@ -3,8 +3,7 @@ import {
   reducers as reducersObj
 } from '../counter'
 
-# import { mergeReducers } from '../../src'
-import { mergeReducers } from '../../dist/bundle'
+import { mergeReducers } from './cfxRedux'
 
 export default =>
 
