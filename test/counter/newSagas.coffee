@@ -20,6 +20,10 @@ export default
       }
     ) ->
 
+      # dd
+      #   type: action.type
+      #   actions: Object.keys actions
+
       yield sagaEffects.call delay, 1000
 
       # yield sagaEffects.put {

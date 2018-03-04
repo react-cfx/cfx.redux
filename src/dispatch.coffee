@@ -1,9 +1,10 @@
 # import dd from 'ddeyes'
 
-handleFilter = (reducersOrSagas, handler) =>
+handleFilter = (reducersOrSagas, type, handler) =>
   (
     Object.keys handler
   ).reduce (r, c) =>
+    return r if c is type
     switch reducersOrSagas c
       when 'reducers'
       then {
@@ -28,13 +29,14 @@ handleFilter = (reducersOrSagas, handler) =>
 
 filter = (
   reducersOrSagas
+  type
   {
     dispatch
     actions
   }
 ) =>
-  dispatch: handleFilter reducersOrSagas, dispatch 
-  actions: handleFilter reducersOrSagas, actions
+  dispatch: handleFilter reducersOrSagas, type, dispatch 
+  actions: handleFilter reducersOrSagas, type, actions
 
 filterType = (
   reducersOrSagas
@@ -44,7 +46,6 @@ filterType = (
     actions
   }
 ) =>
-
   if ( reducersOrSagas type ) is 'reducers'
     dispatch: dispatch.reducers
     actions: actions.reducers
@@ -72,6 +73,7 @@ promiseWapper = ({
     dispatch
     actions
   } = filter reducersOrSagas
+  , type
   , {
     dispatch
     actions

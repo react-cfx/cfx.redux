@@ -1,20 +1,21 @@
 import dd from 'ddeyes'
 
 import {
-  reducers as reducersObj
-  sagas as sagasObj
+  reducers
+  sagas
   newSagas
 } from '../counter'
 import { createApp } from './cfxRedux'
 
 myApp =
-  onlyReducers: createApp
-    reducers: reducersObj
+  onlyReducers: createApp {
+    reducers 
     onSubscribe: (store) =>
       dd store.getState()
-  all: createApp
-    reducers: reducersObj
-    sagas: sagasObj
+  }
+  all: createApp {
+    reducers
+    sagas
     onChange: (
       prevState
       nextState
@@ -32,8 +33,9 @@ myApp =
             else action.payload
         }
       }
+  }
   newSagas: createApp
-    reducers: reducersObj
+    reducers: reducers
     sagas: newSagas
     onChange: (
       prevState
@@ -56,7 +58,6 @@ myApp =
 export default =>
 
   dd "Sync =>"
-
   dd myApp.onlyReducers.store.getState()
 
   myApp.onlyReducers.store.dispatch(
@@ -71,6 +72,13 @@ export default =>
 
   dd "Async =>"
 
+  dd "  newSagas =>"
+  dd myApp.newSagas.store.getState()
+
+  dd await myApp.newSagas.dispatch.incrementAsync 5
+  dd await myApp.newSagas.dispatch.decrementAsync 3
+
+  dd "  all =>"
   dd myApp.all.store.getState()
 
   myApp.all.store.dispatch(
@@ -79,6 +87,3 @@ export default =>
   myApp.all.store.dispatch(
     myApp.all._.actions.decrementAsync 3
   )
-
-  dd await myApp.newSagas.dispatch.incrementAsync 5
-  dd await myApp.newSagas.dispatch.decrementAsync 3
