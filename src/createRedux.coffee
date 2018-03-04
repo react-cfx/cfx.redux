@@ -46,7 +46,7 @@ export default ({
     }...
   }
 
-  constants = mergeActionsTypes {
+  _constants = {
     reducers: toActionsTypes _.constants.reducers
     (
       if _.sagas?
@@ -55,6 +55,39 @@ export default ({
     )...
   }
 
+  reducersOrSagas = (waitToCheck) =>
+
+    if waitToCheck in (
+      Object.keys _constants.reducers.types
+    )
+      'reducers'
+
+    else if waitToCheck in (
+      Object.keys _constants.reducers.actions
+    )
+      'reducers'
+
+    else if _.sagas?
+
+      if waitToCheck in (
+        Object.keys _constants.sagas.types
+      )
+        'sagas'
+      else if waitToCheck in (
+        Object.keys _constants.sagas.actions
+      )
+        'sagas'
+
+    else undefined
+
+  _ = {
+    _...
+    {
+      reducersOrSagas
+    }...
+  }
+
+  constants = mergeActionsTypes _constants
   { types } = constants
 
   {

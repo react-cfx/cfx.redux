@@ -14,12 +14,23 @@ handleActions = (
     {
       r...
       "#{c}": (state, action = {}) =>
-        if action.payload?.success? 
-          newState = reducers[c] state
-          , payload: action.payload.payload
-          action.payload.success newState
+
+        if action.payload?.payload?
+        
+          newAction =
+            type: action.type
+            payload: action.payload.payload
+
+          newState = reducers[c] state, newAction
+          , action.payload.helper
+
+          if action.payload.success?
+            action.payload.success newState
+
         else
+
           newState = reducers[c] state, action
+
         newState
     }
   , {}
@@ -33,16 +44,6 @@ toReducer = (
   reducer
   initState
 }
-
-# valuesOfObj = (Obj) =>
-#   (
-#     Object.keys Obj
-#   ).reduce (r, c) =>
-#     [
-#       r...
-#       Obj[c]
-#     ]
-#   , []
 
 mergeReducers = (
   reduceMap 
@@ -116,6 +117,16 @@ export {
   toReducer
   mergeReducers
 }
+
+# valuesOfObj = (Obj) =>
+#   (
+#     Object.keys Obj
+#   ).reduce (r, c) =>
+#     [
+#       r...
+#       Obj[c]
+#     ]
+#   , []
 
 # import SI from 'cfx.seamless-immutable'
 # "cfx.seamless-immutable": "^0.0.1",

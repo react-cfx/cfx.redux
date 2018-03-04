@@ -3,31 +3,38 @@ import dd from 'ddeyes'
 import createRedux from './createRedux'
 import { createStore } from './cfxRedux'
 
-export default =>
+redux = createRedux()
 
-  redux = createRedux()
-
-  myStore = createStore
+myStore =
+  onlyReducers: createStore
     reducers: redux.reducers
-    sagas: redux.sagas
     onSubscribe: (store) =>
       dd store.getState()
+  all: createStore
+    reducers: redux.reducers
+    sagas: redux.sagas
     onChange: (
       prevState
       nextState
       action 
       dispatch
     ) =>
-      dd async: {
+      dd {
         prevState
         nextState
         action
       }
 
-  dd myStore.getState()
+export default =>
 
-  syncAction = redux.actions.increment 5
-  myStore.dispatch syncAction
+  dd "Sync =>"
 
-  asyncAction = redux.actions.incrementAsync 5
-  myStore.dispatch asyncAction
+  dd myStore.onlyReducers.getState()
+  myStore.onlyReducers.dispatch redux.actions.increment 5
+  myStore.onlyReducers.dispatch redux.actions.decrement 3
+
+  dd "Async =>"
+
+  dd myStore.all.getState()
+  myStore.all.dispatch redux.actions.incrementAsync 5
+  myStore.all.dispatch redux.actions.decrementAsync 3

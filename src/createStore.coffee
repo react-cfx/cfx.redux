@@ -41,8 +41,25 @@ export default ({
     (
       if onChange?
       then [
-        onStateChange (args...) =>
-          onChange.apply store, args
+        onStateChange (
+          prevState
+          nextState
+          action 
+          dispatch
+        ) =>
+          onChange.apply store, [
+            prevState
+            nextState
+            {
+              action...
+              (
+                if action.payload?.payload?.payload?
+                then payload: action.payload.payload.payload
+                else {}
+              )...
+            }
+            dispatch
+          ]
       ]
       else []
     )...

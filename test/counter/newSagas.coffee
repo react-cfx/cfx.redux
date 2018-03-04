@@ -13,20 +13,34 @@ export default
 
     INCREMENT_ASYNC: ({ types }) => (
       action
+      {
+        store
+        actions
+        dispatch
+      }
     ) ->
 
       yield sagaEffects.call delay, 1000
-      yield sagaEffects.put {
-        action...
-        type: types.INCREMENT
-      }
+
+      # yield sagaEffects.put {
+      #   action...
+      #   type: types.INCREMENT
+      # }
+
+      # yield store.dispatch(
+      #   actions.increment action.payload
+      # )
+
+      yield dispatch.increment action.payload
 
     DECREMENT_ASYNC: ({ types }) => (
       action
+      {
+        store
+        actions
+        dispatch
+      }
     ) ->
 
       yield sagaEffects.call delay, 1000
-      yield sagaEffects.put {
-        action...
-        type: types.DECREMENT
-      }
+      yield dispatch.decrement action.payload

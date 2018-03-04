@@ -23,19 +23,34 @@ createSaga = ({
 promiseSaga = (
   saga
 ) =>
-  ({ types }) => ( action = {} ) ->
 
-    if action.payload?.success?
-      {
-        success
-        failure
-      } = yield from ( saga { types } ) action.payload
-      if success?
-        action.payload.success success
-      else if action.payload?.failure?
-        action.payload.failure failure
+  ({ types }) => (action = {}) ->
+
+    if action.payload?.success? or action.payload?.failure?
+
+      newAction =
+        type: action.type
+        payload: action.payload.payload
+
+      sagaResult = yield from ( saga { types } ) newAction
+      , action.payload.helper
+
+      if action.payload.success?
+
+        result =
+          if sagaResult.success?
+          then action.payload.success sagaResult.success
+          else action.payload.success sagaResult
+
+      else if action.payload.failure?
+
+        result = 
+          if sagaResult.failure?
+          then action.payload.failure sagaResult.failure
+          else action.payload.failure sagaResult
 
     else
+
       result = yield from ( saga { types } ) action
 
     result

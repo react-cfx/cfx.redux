@@ -22,10 +22,24 @@ export default ({
     onChange
   }
 
-  dispatch = promiseWapper {
+  _dispatch = promiseWapper {
     store
     actions: redux.actions
+    reducersOrSagas: redux._.reducersOrSagas
   }
+
+  dispatch = (
+    Object.keys _dispatch
+  ).reduce (r, c) =>
+    {
+      r...
+      "#{c}": ( payload ) =>
+        _dispatch[c] {
+          payload
+          dispatch
+        }
+    }
+  , {}
 
   {
     store
