@@ -3,29 +3,29 @@ import dd from 'ddeyes'
 import createRedux from './createRedux'
 import { createStore } from './cfxRedux'
 
-redux = createRedux()
+export default =>
 
-myStore =
-  onlyReducers: createStore
-    reducers: redux.reducers
-    onSubscribe: (store) =>
-      dd store.getState()
-  all: createStore
-    reducers: redux.reducers
-    sagas: redux.sagas
-    onChange: (
-      prevState
-      nextState
-      action 
-      dispatch
-    ) =>
-      dd {
+  redux = createRedux()
+
+  myStore =
+    onlyReducers: createStore
+      reducers: redux.reducers
+      onSubscribe: (store) =>
+        dd store.getState()
+    all: createStore
+      reducers: redux.reducers
+      sagas: redux.sagas
+      onChanged: (
         prevState
         nextState
-        action
-      }
-
-export default =>
+        action 
+        dispatch
+      ) =>
+        dd {
+          prevState
+          nextState
+          action
+        }
 
   dd "Sync =>"
 

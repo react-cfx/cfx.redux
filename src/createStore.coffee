@@ -24,7 +24,7 @@ export default ({
   reducers
   sagas
   onSubscribe
-  onChange
+  onChanged
 }) =>
 
   SagaMW = new SagaMiddleware() if sagas?
@@ -39,7 +39,7 @@ export default ({
       else []
     )...
     (
-      if onChange?
+      if onChanged?
       then [
         onStateChange (
           prevState
@@ -47,7 +47,7 @@ export default ({
           action 
           dispatch
         ) =>
-          onChange.apply store, [
+          onChanged.apply store, [
             prevState
             nextState
             {

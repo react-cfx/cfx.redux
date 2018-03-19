@@ -48,7 +48,8 @@ toReducer = (
 mergeReducers = (
   reduceMap 
 ) =>
-  (
+
+  result = (
     Object.keys reduceMap
   ).reduce (r, c, i, a) =>
 
@@ -58,17 +59,12 @@ mergeReducers = (
 
     then (
 
-      _reducers = {
+      reducers: {
         r.reducers...
         "#{c}":
           handleActions reduceMap[c].reducer
           , reduceMap[c].initState
       }
-
-      reducers:
-        if a.length is (i + 1)
-        then combineReducers _reducers
-        else _reducers
 
       initStates: {
         r.initStates...
@@ -88,7 +84,6 @@ mergeReducers = (
           , {}
         )...
       }
-
     )
 
     else (
@@ -105,13 +100,21 @@ mergeReducers = (
         "#{c}": _mergedObj.initStates
       }
 
-      constants: r.constants
+      constants: {
+        r.constants...
+        _mergedObj.constants...
+      }
 
     ) 
   ,
     reducers: {}
     initStates: {}
     constants: {}
+
+  {
+    result...
+    reducers: combineReducers result.reducers
+  }
 
 export {
   toReducer

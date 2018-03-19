@@ -7,6 +7,8 @@ import { mergeReducers } from './cfxRedux'
 
 export default =>
 
+  dd { reducersObj }
+
   dd
     reducersObj: {
       reducersObj...
@@ -19,9 +21,6 @@ export default =>
   reducers = mergeReducers reducersObj
 
   dd
-    mergeReducers: {
-      reducers...
-      reducers: typeof reducers.reducers
-    }
+    mergeReducers: reducers
 
   reducers

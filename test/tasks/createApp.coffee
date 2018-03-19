@@ -7,55 +7,55 @@ import {
 } from '../counter'
 import { createApp } from './cfxRedux'
 
-myApp =
-  onlyReducers: createApp {
-    reducers 
-    onSubscribe: (store) =>
-      dd store.getState()
-  }
-  all: createApp {
-    reducers
-    sagas
-    onChange: (
-      prevState
-      nextState
-      action 
-      dispatch
-    ) =>
-      dd {
-        prevState
-        nextState
-        action: {
-          type: action.type
-          payload: 
-            if action.payload?.payload?
-            then action.payload.payload
-            else action.payload
-        }
-      }
-  }
-  newSagas: createApp
-    reducers: reducers
-    sagas: newSagas
-    onChange: (
-      prevState
-      nextState
-      action 
-      dispatch
-    ) =>
-      dd {
-        prevState
-        nextState
-        action: {
-          type: action.type
-          payload: 
-            if action.payload?.payload?
-            then action.payload.payload
-            else action.payload
-        }
-      }
-
 export default =>
+
+  myApp =
+    onlyReducers: createApp {
+      reducers 
+      onSubscribe: (store) =>
+        dd store.getState()
+    }
+    all: createApp {
+      reducers
+      sagas
+      onChanged: (
+        prevState
+        nextState
+        action 
+        dispatch
+      ) =>
+        dd {
+          prevState
+          nextState
+          action: {
+            type: action.type
+            payload: 
+              if action.payload?.payload?
+              then action.payload.payload
+              else action.payload
+          }
+        }
+    }
+    newSagas: createApp
+      reducers: reducers
+      sagas: newSagas
+      onChanged: (
+        prevState
+        nextState
+        action 
+        dispatch
+      ) =>
+        dd {
+          prevState
+          nextState
+          action: {
+            type: action.type
+            payload: 
+              if action.payload?.payload?
+              then action.payload.payload
+              else action.payload
+          }
+        }
 
   dd "Sync =>"
   dd myApp.onlyReducers.store.getState()

@@ -7,7 +7,7 @@ export default ({
   reducers
   sagas
   onSubscribe
-  onChange
+  onChanged
 }) =>
 
   redux = createRedux {
@@ -19,7 +19,7 @@ export default ({
     reducers: redux.reducers
     sagas: redux.sagas
     onSubscribe
-    onChange
+    onChanged
   }
 
   _dispatch = promiseWapper {
