@@ -4,7 +4,7 @@ import {
   applyMiddleware
 } from 'redux'
 import onStateChange from 'redux-on-state-change'
-import { SagaMiddleware } from 'cfx.redux.saga'
+import { SagaMiddleware } from 'cfx.redux.sagas'
 
 CreateStore = (
   reducers

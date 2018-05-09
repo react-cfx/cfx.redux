@@ -1,5 +1,5 @@
 {
-  "name": "cfx.redux.saga",
+  "name": "cfx.redux.sagas",
   "version": "0.0.1",
   "main": "dist/main.js",
   "module": "dist/main.es.js",
