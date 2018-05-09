@@ -1,7 +1,7 @@
 import 'shelljs/make'
 import dd from 'ddeyes'
 
-import { toActionsTypes } from 'cfx.redux.types'
+import { toActionsTypes } from 'cfx.redux.type'
 import { createActions } from '../src'
 
 target.all = ->

@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "gulp clean",
     "build": "gulp build",
-    "rebuild": "gulp rebuild"
+    "rebuild": "gulp rebuild",
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "ddeyes": "^0.2.1",
