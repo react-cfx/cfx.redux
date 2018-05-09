@@ -1,0 +1,27 @@
+{
+  "name": "cfx.redux.redux",
+  "version": "0.0.0",
+  "main": "dist/main.js",
+  "module": "dist/main.es.js",
+  "scripts": {
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "rebuild": "gulp rebuild",
+    "postinstall": "npm run build"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ddeyes": "^0.2.1",
+    "shelljs": "^0.8.1"
+  },
+  "dependencies": {
+    "cfx.redux-actions": "^0.0.1",
+    "cfx.redux-saga": "^0.0.1",
+    "cfx.redux-types": "^0.0.4",
+    "cfx.rollup-plugin-coffee2": "^0.1.4",
+    "redux": "^3.7.2",
+    "redux-on-state-change": "^1.0.0",
+    "rollup": "^0.56.2",
+    "rollup-plugin-cleanup": "^2.0.0"
+  }
+}

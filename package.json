@@ -1,40 +1,14 @@
 {
-  "name": "cfx.redux",
-  "version": "0.1.3",
-  "description": "cfx.redux",
-  "main": "dist/bundle.js",
+  "name": "cfx.react",
+	"version": "0.0.0",
   "scripts": {
-    "clean": "rm -rf ./dist",
-    "build": "rollup -c",
-    "rebuild": "npm run clean; npm run build",
-    "postinstall": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/react-cfx/cfx.redux.git"
-  },
-  "keywords": [
-    "cfx"
-  ],
-  "author": "FooTearth <footearth@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/react-cfx/cfx.redux/issues"
-  },
-  "homepage": "https://github.com/react-cfx/cfx.redux#readme",
+		"lernaclean": "lerna clean --yes",
+		"lernabootstrap": "lerna bootstrap",
+		"rebootstrap": "npm run lernaclean; npm run lernabootstrap",
+		"cleanall": "lerna exec -- rm -rf ./dist ./yarn*; npm run lernaclean",
+		"rebootall": "npm run cleanall; npm run lernabootstrap"
+	},
   "devDependencies": {
-    "coffee-require": "^0.0.4",
-    "ddeyes": "^0.0.6",
-    "shelljs": "^0.8.1"
-  },
-  "dependencies": {
-    "cfx.redux-actions": "^0.0.1",
-    "cfx.redux-saga": "^0.0.1",
-    "cfx.redux-types": "^0.0.4",
-    "cfx.rollup-plugin-coffee2": "^0.1.4",
-    "redux": "^3.7.2",
-    "redux-on-state-change": "^1.0.0",
-    "rollup": "^0.56.2",
-    "rollup-plugin-cleanup": "^2.0.0"
+    "lerna": "^2.11.0"
   }
 }
