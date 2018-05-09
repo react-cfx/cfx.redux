@@ -2,8 +2,8 @@
 import {
   toActionsTypes
   mergeActionsTypes
-} from 'cfx.redux-types'
-import { createActions } from 'cfx.redux-actions'
+} from 'cfx.redux.type'
+import { createActions } from 'cfx.redux.action'
 import { mergeReducers } from './reducers'
 import { mergeSagas } from './sagas'
 

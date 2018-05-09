@@ -1,7 +1,7 @@
 # import dd from 'ddeyes'
 
 import { combineReducers } from 'redux'
-import { reduxActions } from 'cfx.redux-actions'
+import { reduxActions } from 'cfx.redux.action'
 
 handleActions = (
   reducers

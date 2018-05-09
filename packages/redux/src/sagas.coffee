@@ -1,6 +1,6 @@
 # import dd from 'ddeyes'
 
-import { sagaEffects } from 'cfx.redux-saga'
+import { sagaEffects } from 'cfx.redux.saga'
 
 createSaga = ({
   everyOrLatest = 'every'

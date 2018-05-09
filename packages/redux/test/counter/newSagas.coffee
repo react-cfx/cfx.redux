@@ -1,7 +1,7 @@
 # import dd from 'ddeyes'
 
 import { toSaga } from '../../src'
-import { sagaEffects } from 'cfx.redux-saga'
+import { sagaEffects } from 'cfx.redux.saga'
 
 delay = (ms) =>
   new Promise (resolve) =>

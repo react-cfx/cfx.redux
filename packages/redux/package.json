@@ -9,16 +9,21 @@
     "rebuild": "gulp rebuild",
     "postinstall": "npm run build"
   },
-  "license": "MIT",
   "devDependencies": {
     "ddeyes": "^0.2.1",
     "shelljs": "^0.8.1"
   },
   "dependencies": {
-    "cfx.redux-actions": "^0.0.1",
-    "cfx.redux-saga": "^0.0.1",
-    "cfx.redux-types": "^0.0.4",
-    "cfx.rollup-plugin-coffee2": "^0.1.4",
+    "cfx.redux.action": "^0.0.0",
+    "cfx.redux.saga": "^0.0.0",
+    "cfx.redux.type": "^0.0.0",
+    "cfx.require-plugin-coffee": "^0.2.6",
+    "cfx.rollup-plugin-coffee2": "^0.2.6",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-better-rollup": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sequence": "^1.0.0",
     "redux": "^3.7.2",
     "redux-on-state-change": "^1.0.0",
     "rollup": "^0.56.2",
