@@ -1,6 +1,6 @@
 {
   "name": "cfx.redux.redux",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "dist/main.js",
   "module": "dist/main.es.js",
   "scripts": {
@@ -14,9 +14,9 @@
     "shelljs": "^0.8.1"
   },
   "dependencies": {
-    "cfx.redux.action": "^0.0.0",
-    "cfx.redux.saga": "^0.0.0",
-    "cfx.redux.type": "^0.0.0",
+    "cfx.redux.action": "^0.0.1",
+    "cfx.redux.saga": "^0.0.1",
+    "cfx.redux.type": "^0.0.1",
     "cfx.require-plugin-coffee": "^0.2.6",
     "cfx.rollup-plugin-coffee2": "^0.2.6",
     "del": "^3.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "cfx.redux.action",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "dist/main.js",
   "module": "dist/main.es.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "postinstall": "npm run build"
   },
   "devDependencies": {
-    "cfx.redux.type": "^0.0.0",
+    "cfx.redux.type": "^0.0.1",
     "ddeyes": "^0.2.1",
     "shelljs": "^0.8.1"
   },
