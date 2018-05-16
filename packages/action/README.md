@@ -1,1 +1,1 @@
-# cfx.redux.actions
+# cfx.redux.action

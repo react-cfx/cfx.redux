@@ -1,14 +1,19 @@
 {
   "name": "cfx.react",
-	"version": "0.0.0",
+  "version": "0.0.0",
   "scripts": {
-		"lernaclean": "lerna clean --yes",
-		"lernabootstrap": "lerna bootstrap",
-		"rebootstrap": "npm run lernaclean; npm run lernabootstrap",
-		"cleanall": "lerna exec -- rm -rf ./dist ./yarn*; npm run lernaclean",
-		"rebootall": "npm run cleanall; npm run lernabootstrap"
-	},
+    "lernaclean": "lerna clean --yes",
+    "lernabootstrap": "lerna bootstrap",
+    "rebootstrap": "npm run lernaclean; npm run lernabootstrap",
+    "cleanall": "lerna run clean; lerna exec -- rm -rf ./dist ./yarn*; npm run lernaclean",
+    "rebootall": "npm run cleanall; npm run lernabootstrap",
+    "autod": "autod",
+    "updated": "lerna run autod; lerna updated"
+  },
   "devDependencies": {
+    "autod": "^3.0.1",
+    "cfx.require-plugin-coffee": "^0.2.10",
     "lerna": "^2.11.0"
-  }
+  },
+  "dependencies": {}
 }

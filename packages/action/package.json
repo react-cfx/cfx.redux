@@ -1,30 +1,32 @@
 {
   "name": "cfx.redux.action",
-  "version": "0.0.1",
-  "main": "dist/main.js",
-  "module": "dist/main.es.js",
+  "version": "0.0.4",
+  "main": "dist/index.js",
   "scripts": {
-    "clean": "gulp clean",
+    "autod": "autod",
+    "clean": "rm -rf ./dist",
     "build": "gulp build",
     "rebuild": "gulp rebuild",
     "test": "npm run rebuild; ./test/index.coffee",
     "postinstall": "npm run build"
   },
   "devDependencies": {
-    "cfx.redux.type": "^0.0.1",
-    "ddeyes": "^0.2.1",
-    "shelljs": "^0.8.1"
+    "autod": "^3.0.1",
+    "cfx.redux.type": "0.0.4",
+    "ddeyes": "^0.2.8",
+    "shelljs": "^0.8.2"
   },
   "dependencies": {
-    "cfx.require-plugin-coffee": "^0.2.6",
-    "cfx.rollup-plugin-coffee2": "^0.2.6",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-better-rollup": "^3.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sequence": "^1.0.0",
-    "redux-actions": "^2.3.2",
-    "rollup": "^0.58.2",
-    "rollup-plugin-cleanup": "^3.0.0-beta.1"
+    "@babel/runtime": "~7.0.0-beta.47",
+    "cfx.require-plugin-coffee": "~0.2.10",
+    "cfx.rollup-plugin-coffee2": "~0.2.10",
+    "del": "~3.0.0",
+    "gulp": "~3.9.1",
+    "gulp-better-rollup": "~3.1.0",
+    "gulp-rename": "~1.2.3",
+    "gulp-sequence": "~1.0.0",
+    "redux-actions": "~2.3.2",
+    "rollup": "~0.59.0",
+    "rollup-plugin-cleanup": "~3.0.0-beta.1"
   }
 }
