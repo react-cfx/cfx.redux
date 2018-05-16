@@ -1,6 +1,6 @@
 {
   "name": "cfx.redux.redux",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "scripts": {
     "autod": "autod",
@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@babel/runtime": "~7.0.0-beta.47",
-    "cfx.redux.action": "~0.0.4",
-    "cfx.redux.sagas": "~0.0.4",
-    "cfx.redux.type": "~0.0.4",
+    "cfx.redux.action": "^0.0.5",
+    "cfx.redux.sagas": "^0.0.5",
+    "cfx.redux.type": "^0.0.5",
     "cfx.require-plugin-coffee": "~0.2.10",
     "cfx.rollup-plugin-coffee2": "~0.2.10",
     "del": "~3.0.0",
