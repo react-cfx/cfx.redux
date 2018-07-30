@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "autod": "^3.0.1",
-    "cfx.require-plugin-coffee": "^0.2.12",
-    "lerna": "^2.11.0"
+    "cfx.require-plugin-coffee": "^0.2.13",
+    "lerna": "^3.0.0-rc.0"
   },
   "dependencies": {
 
