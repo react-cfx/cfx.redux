@@ -1,0 +1,29 @@
+export default
+  write: true
+  registry: 'https://registry.npm.taobao.org'
+  prefix: '~'
+  devprefix: '^'
+  plugin: ''
+  test: []
+  dep: [
+    'ddeyes'
+    'del'
+    'gulp'
+    'gulp-better-rollup'
+    'gulp-rename'
+    'gulp-sequence'
+    'rollup'
+    'rollup-plugin-cleanup'
+    'cfx.require-plugin-coffee'
+    'cfx.rollup-plugin-coffee2'
+    'react-redux'
+    'redux'
+  ]
+  devdep: [
+    'autod'
+    'shelljs'
+  ]
+  exclude: [
+    './node_modules'
+    './.autod.conf.js'
+  ]
