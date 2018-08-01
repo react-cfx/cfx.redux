@@ -1,6 +1,6 @@
 {
   "name": "cfx.redux.action",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "dist/index.js",
   "scripts": {
     "autod": "autod",
@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "autod": "^3.0.1",
-    "cfx.redux.type": "^0.0.9",
+    "cfx.redux.type": "^0.0.10",
     "ddeyes": "^0.2.13",
     "shelljs": "^0.8.2"
   },
