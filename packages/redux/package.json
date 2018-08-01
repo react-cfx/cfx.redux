@@ -1,6 +1,6 @@
 {
   "name": "cfx.redux.redux",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "dist/index.js",
   "scripts": {
     "autod": "autod",
@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@babel/runtime": "~7.0.0-beta.55",
-    "cfx.redux.action": "^0.0.8",
-    "cfx.redux.sagas": "^0.0.8",
-    "cfx.redux.type": "^0.0.8",
+    "cfx.redux.action": "~0.0.9",
+    "cfx.redux.sagas": "~0.0.9",
+    "cfx.redux.type": "~0.0.9",
     "cfx.require-plugin-coffee": "~0.2.13",
     "cfx.rollup-plugin-coffee2": "~0.2.13",
     "del": "~3.0.0",
@@ -26,7 +26,7 @@
     "gulp-better-rollup": "~3.3.0",
     "gulp-rename": "~1.4.0",
     "gulp-sequence": "~1.0.0",
-    "redux": "~4.0.0",
+    "redux": "~3.7.2",
     "redux-on-state-change": "~1.0.0",
     "rollup": "~0.63.4",
     "rollup-plugin-cleanup": "~3.0.0"
