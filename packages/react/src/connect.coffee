@@ -6,7 +6,7 @@ export default (
   dispatcher
 ) =>
 
-  (getState, actions, Component) =>
+  (getState, actions, Component, options, mergeProps) =>
 
     connect(
 
@@ -17,5 +17,8 @@ export default (
         dispatcher or= dispatch
         actions:
           actionCreatorsBinder actions, dispatcher
+        
+      mergeProps
+      options
 
     ) Component
